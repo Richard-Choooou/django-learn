@@ -15,6 +15,8 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+STATIC_ROOT=BASE_DIR.joinpath("static")
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
@@ -25,8 +27,10 @@ SECRET_KEY = 'django-insecure-sy+nv5l6@volrdvfs@h!%^wb5#!4)=w&4#p-8vydbbr74el=pi
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = [
+    "*"
+]
+CSRF_TRUSTED_ORIGINS = ['http://localhost', "http://127.0.0.1"]
 
 # Application definition
 
@@ -78,10 +82,21 @@ WSGI_APPLICATION = 'todos.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "todo",
+        "USER": "postgres",
+        "PASSWORD": "123456",
+        "HOST": "postgres",
+        "PORT": "5432",
     }
 }
 

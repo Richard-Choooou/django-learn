@@ -1,0 +1,12 @@
+/node_modules
+/venv
+/package-lock.json
+/package.json
+/gulpfile.js
+/Dockerfile
+/db.sqlite3
+/.git
+/.gitignore
+/.idea
+/static
+/docker_temp
